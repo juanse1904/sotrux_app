@@ -1,0 +1,212 @@
+{
+  "tables": [
+    {
+      "title": "proovedores",
+      "subTabs": [
+        {
+          "name": "tab1"
+        },
+        {
+          "name": "tab2"
+        },
+        {
+          "name": "tab3"
+        },
+        {
+          "name": "tab4"
+        }
+      ],
+      "inputs": [
+        {
+          "input": "Input",
+          "type": "text",
+          "key": "name",
+          "name": "name",
+          "placeHolder": "Escriba su nombre",
+          "columnLocation": "1 / 7",
+          "rowLocation": "1",
+          "isRequired": true
+        },
+        {
+          "input": "Input",
+          "type": "text",
+          "key": "address",
+          "name": "address",
+          "placeHolder": "Escriba su dirección",
+          "columnLocation": "7 / 13",
+          "rowLocation": "1",
+          "isRequired": true
+        },
+        {
+          "input": "Input",
+          "type": "checkbox",
+          "key": "active",
+          "name": "active",
+          "placeHolder": "proovedor en espera",
+          "columnLocation": "1/7",
+          "rowLocation": "2",
+          "isRequired": false
+        },
+        {
+          "input": "List",
+          "type": "",
+          "name": "risk",
+          "key": "risk",
+          "options": [
+            { "value": "bajo", "change": false },
+            { "value": "moderado", "change": true },
+            { "value": "medio", "change": true },
+            { "value": "alto", "change": true },
+            { "value": "muy alto", "change": true }
+          ],
+          "changeKey": "nit",
+          "placeHolder": "Escriba su dirección",
+          "columnLocation": "7/13",
+          "rowLocation": "2",
+          "isRequired": false
+        },
+        {
+          "input": "double-input",
+          "type": "doubleInput",
+          "name": "nit",
+          "isDouble": true,
+          "key": "nit",
+          "placeHolder1": "Documento",
+          "placeHolder2": "Código",
+          "columnLocation": "1/7",
+          "rowLocation": "3",
+          "isRequired": false
+        }
+      ]
+    },
+    {
+      "title": "clientes",
+      "inputs": [
+        {
+          "input": "Input",
+          "type": "text",
+          "name": "ciudad",
+          "key": "city",
+          "placeHolder": "Escriba su nombre",
+          "columnLocation": "1 / 6",
+          "rowLocation": "1",
+          "isRequired": true
+        },
+        {
+          "input": "List",
+          "type": "",
+          "name": "antiguedad",
+          "key": "time",
+          "options": ["menos de 1 año", "de 1 a 3 años", "de 3 a 5 años", "mas de 5 años"],
+          "columnLocation": "1 / 6",
+          "rowLocation": "2",
+          "isRequired": true
+        },
+        {
+          "input": "Input",
+          "type": "text",
+          "name": "dirección",
+          "key": "address",
+          "placeHolder": "Escriba su dirección",
+          "columnLocation": "6/12",
+          "rowLocation": "2",
+          "isRequired": false
+        },
+        {
+          "input": "List",
+          "type": "",
+          "name": "frecuencia",
+          "key": "frequency",
+          "options": ["bajo", "moderado", "medio", "alto", "muy alto"],
+          "columnLocation": "6/12",
+          "rowLocation": "3",
+          "isRequired": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "user": "otro user",
+      "password": "mypassword-encriptada$"
+    }
+  ],
+  "data": [
+    {
+      "title": "proovedores",
+      "records": [
+        {
+          "name": "proovedor SA 1",
+          "address": "calle 34 F # 125 - 45",
+          "active": false,
+          "risk": "moderado",
+          "nit": { "v1": "32758340", "v2": "341" }
+        },
+        {
+          "name": "Los proovedores ltda 2",
+          "address": "Avenida 19 A # 127 - 37",
+          "active": false,
+          "risk": "bajo",
+          "nit": { "v1": "32758340", "v2": "341" }
+        },
+        {
+          "name": "otros proovedores SA 3",
+          "address": "Carrera 38 da # 127 A - 12",
+          "active": true,
+          "risk": "alto",
+          "nit": { "v1": "32758340", "v2": "341" }
+        },
+        {
+          "name": "demas proovedores ltda 4",
+          "address": "Calle 2 da # 38 bis - 43",
+          "active": true,
+          "risk": "medio",
+          "nit": { "v1": "32758340", "v2": "341" }
+        }
+      ]
+    },
+    {
+      "title": "clientes",
+      "records": [
+        {
+          "city": "Buenos Aires",
+          "time": "de 1 a 3 años",
+          "address": "Calle 2 da # 38 bis - 43",
+          "frequency": "moderado"
+        },
+        {
+          "city": "Medellin",
+          "time": "mas de 5 años",
+          "address": "Calle 192 F # 3 oeste - 93",
+          "frequency": "moderado"
+        },
+        {
+          "city": "Sao Paulo",
+          "time": "de 3 a 5 años",
+          "address": "avenida 15  # 146 - 28",
+          "frequency": "moderado"
+        },
+        {
+          "city": "Guadalajara",
+          "time": "menos de 1 año",
+          "address": "Carrera 56 K # 32 Norte",
+          "frequency": "moderado"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "user": "otro user",
+      "password": "mypassword-encriptada$"
+    },
+    {
+      "id": 6,
+      "user": "otro user",
+      "password": "mypassword-encriptada$"
+    },
+    {
+      "id": 7,
+      "user": "otro user",
+      "password": "mypassword-encriptada$"
+    }
+  ]
+}

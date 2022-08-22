@@ -1,0 +1,30 @@
+.userConfirmationMainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+}
+.messageContainer {
+  background-color: white;
+  border-radius: 6px;
+  padding: 25px;
+  max-width: 470px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.messageContainer > h3 {
+  margin: 20px 0;
+  text-align: center;
+}
+.messageContainer > input[type="button"] {
+  color: white;
+  background-color: #cc912e;
+  box-shadow: 0px 5px 10px rgba(52, 77, 178, 0.32);
+  border-radius: 3px;
+  height: 30px;
+  border: none;
+  padding: 0 35px;
+}

@@ -1,0 +1,40 @@
+.layout-background {
+  position: relative;
+  width: calc(100%);
+  height: calc(100%);
+  background-color: #f5f6fa;
+  z-index: 0;
+}
+.children-container {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+}
+.decoration1 {
+  width: 120px;
+  position: absolute;
+  top: 55%;
+  left: 0;
+  z-index: 0;
+}
+.decoration2 {
+  width: 130px;
+  position: absolute;
+  top: 80%;
+  left: 15%;
+  z-index: 0;
+}
+.decoration3 {
+  width: 190px;
+  position: absolute;
+  top: 25%;
+  right: 15%;
+  z-index: 0;
+}
+.decoration4 {
+  width: 130px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+}
