@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { publicCopies } from "../../store/publicCopies";
+import { useNavigate } from "react-router-dom";
+import { publicCopies } from "../../ducks/publicCopies";
 import MessageIlustration from "../../assets/errorMessage-ilustration.svg";
 import LoadCircle from "../../components/loadCircle/LoadCircle";
 import "./ValidationErrorStyles.css";

@@ -85,3 +85,25 @@ exports.logInUser = async (username, password) => {
     return "sign in failed", error;
   }
 };
+
+exports.isLogged = async () => {
+  Amplify.configure({
+    Auth: {
+      userPoolId: process.env.REACT_APP_AWS_USER_POOL_ID,
+      region: process.env.REACT_APP_AWS_REGION,
+      userPoolWebClientId: process.env.REACT_APP_AWS_CLIENT_ID,
+      authenticationFlowType: "USER_PASSWORD_AUTH",
+    },
+  });
+  try {
+    const user = await Auth.currentAuthenticatedUser();
+    return {
+      message: "signIn succesfull",
+      data: user,
+    };
+  } catch (error) {
+    return "sign in failed", error;
+  }
+};
+
+Auth.currentAuthenticatedUser();

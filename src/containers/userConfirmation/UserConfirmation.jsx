@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import { TextInputStyled } from "../../components/inputs/textInput/styledInput";
-import { publicCopies } from "../../store/publicCopies";
+import { PasswordInputStyled } from "../../components/inputs/passwordInput/styledInput";
+import { NumberInputStyled } from "../../components/inputs/numberInput/styledInput";
+import { publicCopies } from "../../ducks/publicCopies";
 import { confirmSignUp, newCode, updatePassword } from "../../aws-utils/aws-utils";
 import "./UserConfirmationStyles.css";
 import LoadCircle from "../../components/loadCircle/LoadCircle";
@@ -161,9 +163,10 @@ const Login = () => {
                   name="email"
                   placeHolder={windowCopies[language].email}
                   error={false}
+                  readOnly={true}
                   onChangeFunction={handleChange}
                 />
-                <TextInputStyled
+                <NumberInputStyled
                   type="text"
                   name="code"
                   placeHolder={windowCopies[language].validationCode}
@@ -173,7 +176,7 @@ const Login = () => {
                 <div onClick={resendCode} className="label_resend">
                   <p>{windowCopies[language].resendCode}</p>
                 </div>
-                <TextInputStyled
+                <PasswordInputStyled
                   name="password"
                   type="password"
                   placeHolder={windowCopies[language].password}
@@ -190,7 +193,7 @@ const Login = () => {
                     <p>{windowCopies[language].number}</p>
                   </div>
                   <div className={`label_password${length ? "_active" : "_unactive"}`}>
-                    <p>{windowCopies[language].charecters}</p>
+                    <p>{windowCopies[language].characters}</p>
                   </div>
                 </div>
                 <div className={`divFooterForm`}>

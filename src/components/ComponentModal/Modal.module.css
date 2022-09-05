@@ -1,0 +1,69 @@
+/* Popup style */
+.popup_box {
+  position: fixed;
+  background: #000214a8;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.box {
+  position: relative;
+  width: 80vw;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  margin-top: 30px;
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  overflow-x: hidden;
+  border: 1px solid #999;
+  box-shadow: 0px 6px 21px 1px rgba(29, 41, 63, 0.55);
+  border-radius: 20px;
+  padding-right: 17px;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+}
+.close_icon {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 30px 30px;
+}
+
+.close_icon button {
+  border: none;
+  background: none;
+  width: 40px;
+}
+
+@media (orientation: portrait) {
+  .popup_box {
+    height: 100%;
+  }
+  .box {
+    position: relative;
+    width: 90vh;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin-top: calc(100vh - 85vh - 20px);
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    overflow-x: hidden;
+    border: 1px solid #999;
+    box-shadow: 0px 6px 21px 1px rgba(29, 41, 63, 0.55);
+    border-radius: 20px;
+    padding-right: 17px;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+  }
+}

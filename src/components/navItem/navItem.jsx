@@ -1,10 +1,25 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addNewTab } from "../../ducks/tabs";
+import { sendActiveViewId } from "../../ducks/activeView";
 import itemArrow from "../../assets/item-arrow.svg";
 import "./navitem.css";
 
 const NavItem = ({ icon, title, open, active, index, options }) => {
   const isActive = index === active;
+  const history = useNavigate();
+  const currentIndex = useSelector((state) => state.Tabs.tablesCounter);
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const createAndShowTab = async (idtab) => {
+    const identifier = `${idtab}-${currentIndex + 1}`;
+    await dispatch(addNewTab({ id: idtab, lang: "es" }));
+    await dispatch(sendActiveViewId(identifier));
+    history(`/${identifier}`);
+  };
+
   return (
     <div className="nav-option">
       <div className="nav-item">
@@ -32,8 +47,14 @@ const NavItem = ({ icon, title, open, active, index, options }) => {
       </div>
       <div className={`item-list ${isOpen && isActive && open ? "item-list-open" : ""}`}>
         {options.map((option, index) => (
-          <p className={`item-list-option ${isOpen && isActive ? "item-list-option-open" : ""}`} key={index}>
-            {option}
+          <p
+            onClick={() => {
+              createAndShowTab(option.sendTo);
+            }}
+            className={`item-list-option ${isOpen && isActive ? "item-list-option-open" : ""}`}
+            key={index}
+          >
+            {option.name}
           </p>
         ))}
       </div>

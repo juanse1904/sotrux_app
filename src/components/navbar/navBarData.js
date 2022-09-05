@@ -10,7 +10,16 @@ const navBarData = [
       alt: "home-icon",
     },
     title: "Home",
-    options: ["option1", "option2", "option3", "option4"],
+    options: [
+      {
+        name: "Usuarios",
+        sendTo: "users",
+      },
+      {
+        name: "Roles",
+        sendTo: "roles",
+      },
+    ],
   },
   {
     icon: {
@@ -18,7 +27,16 @@ const navBarData = [
       alt: "star-icon",
     },
     title: "Favoritos",
-    options: ["option1", "option2", "option3", "option4"],
+    options: [
+      {
+        name: " ",
+        sendTo: " ",
+      },
+      {
+        name: " ",
+        sendTo: " ",
+      },
+    ],
   },
   {
     icon: {
@@ -26,7 +44,16 @@ const navBarData = [
       alt: "profile-icon",
     },
     title: "Proovedores",
-    options: ["option1", "option2", "option3", "option4"],
+    options: [
+      {
+        name: " ",
+        sendTo: " ",
+      },
+      {
+        name: " ",
+        sendTo: " ",
+      },
+    ],
   },
   {
     icon: {
@@ -34,7 +61,16 @@ const navBarData = [
       alt: "settings-icon",
     },
     title: "Ajustes",
-    options: ["option1", "option2", "option3", "option4"],
+    options: [
+      {
+        name: " ",
+        sendTo: " ",
+      },
+      {
+        name: " ",
+        sendTo: " ",
+      },
+    ],
   },
 ];
 

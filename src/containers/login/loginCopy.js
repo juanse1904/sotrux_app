@@ -6,7 +6,7 @@ const loginCopy = [
     email: "Correo electronico",
     password: "Contraseña",
     recover: "¿Olvidaste tu contraseña?",
-    failMessage:"usuario o contraseña erroneos",
+    failMessage: "usuario o contraseña erroneos",
     button: "Inicia Sesión",
   },
   {
@@ -15,7 +15,7 @@ const loginCopy = [
     email: "Email",
     password: "Password",
     recover: "¿Did you forget your password?",
-    failMessage:"user or password are not correct",
+    failMessage: "user or password are not correct",
     terms: "I Accept Terms of Service and Privacy Politics",
     button: "Login",
   },

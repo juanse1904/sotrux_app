@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import ListInput from "./ListInput";
 
-const ListInputStyled = styled(ListInput)`
-  grid-column: ${(props) => props.columnLocation};
-  grid-row: ${(props) => props.rowLocation};
+export const ListInputStyled = styled(ListInput)`
+  grid-column: ${(props) => props.columnposition};
+  grid-row: ${(props) => props.rowposition};
 
   .select-header {
     width: 100%;
@@ -55,7 +55,6 @@ const ListInputStyled = styled(ListInput)`
   .select-options-list-open {
     opacity: 1;
     visibility: visible;
-    height: ${(props) => props.options.length * 20}px;
+    height: 350px;
   }
 `;
-export default ListInputStyled;

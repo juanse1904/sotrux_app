@@ -27,7 +27,7 @@ const App = () => (
       <Route path="/validation-success" element={<ValidationSuccess />} />
       <Route path="/resend-code-confirmation" element={<ValidationResend />} />
       <Route
-        path="/:tableId"
+        path="/:workWin"
         element={
           //<ProtectedRoute>
           <Layout>

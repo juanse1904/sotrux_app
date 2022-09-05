@@ -5,12 +5,12 @@ import OperationsContainer from "../components/operationsContainer/operationsCon
 import { useParams } from "react-router";
 
 const WorkTable = () => {
-  const { tableId } = useParams();
+  const { workWin } = useParams();
   return (
     <>
       <TabContainer />
       <OperationsContainer />
-      <DynamoWin idTable={tableId} />
+      <DynamoWin idTable={workWin} isModal={false} />
     </>
   );
 };

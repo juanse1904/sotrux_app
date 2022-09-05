@@ -198,6 +198,7 @@ form {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  margin: 9px 0;
 }
 .divFooterForm {
   display: flex;

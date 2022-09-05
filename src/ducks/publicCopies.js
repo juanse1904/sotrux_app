@@ -23,10 +23,12 @@ export default slice.reducer;
 // Actions
 const { getPublicCopies } = slice.actions;
 // Call
+
 export const publicCopies = (window_id) => async (dispatch) => {
   try {
     const data = await fetch(`${URL}/window/public?value=${window_id}`);
     const response = await data.json();
+    console.log("repsonse from API", response);
     dispatch(getPublicCopies({ response, window_id }));
   } catch (e) {
     return console.error(e.message);

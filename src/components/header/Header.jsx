@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import logo from "../../assets/stam-suite-icon.svg";
+import { useSelector } from "react-redux";
+import logoSotrux from "../../assets/sotrux-logo.svg";
 import bellIcon from "../../assets/bell-icon.svg";
 import dialogIcon from "../../assets/dialog-icon.svg";
 import xClose from "../../assets/x-close.svg";
@@ -9,18 +10,19 @@ const Header = () => {
   let [firstClick, setFirstClick] = useState(false);
   let [showed, setShowed] = useState(false);
   let [closed, setClosed] = useState(true);
+  const dataUser = useSelector((state) => state.userData);
   return (
     <header>
       <div className="logo-stam">
-        <img src={logo} alt="stam-logo" />
+        <img src={logoSotrux} alt="sotrux-logo" />
       </div>
       <div className="header-section-2">
         <img src={dialogIcon} alt="dialog-icon-feedback" />
         <p>¿Qué nos hace falta?</p>
       </div>
       <div className="header-user-options">
-        <p>Andres Gómez | </p>
-        <span>Administrador</span>
+        <p>{dataUser.ad_clientname} | </p>
+        <span>{dataUser.rolename}</span>
         <img src="https://pbs.twimg.com/profile_images/1369450104445407234/VORjeSWO_400x400.jpg" alt="" />
       </div>
       <div className="header-notifications">
@@ -53,7 +55,7 @@ const Header = () => {
       >
         <div className="options_subheader">
           <div className="options_subheader_itb_logo">
-            <img src={logo} alt="itb-logo" />
+            <img src={logoSotrux} alt="sotrux-logo" />
           </div>
 
           <div className="cancelx_container">

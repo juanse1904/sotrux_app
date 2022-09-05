@@ -22,6 +22,9 @@
   margin: 3px 15px;
   border-radius: 4px;
 }
+.options-button-disabled {
+  background: #caddf8;
+}
 .options-button-icon {
   width: 45%;
 }

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import DoubleInput from "./DoubleInput";
 
-const DoubleInputStyled = styled(DoubleInput)`
+export const DoubleInputStyled = styled(DoubleInput)`
   grid-column: ${(props) => props.columnLocation};
   grid-row: ${(props) => props.rowLocation};
 
@@ -65,4 +65,3 @@ const DoubleInputStyled = styled(DoubleInput)`
     transition: opacity 0.8s;
   }
 `;
-export default DoubleInputStyled;
