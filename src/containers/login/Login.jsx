@@ -32,8 +32,8 @@ const Login = () => {
   };
 
   const onSubmit = async (e) => {
-    setLoading(true);
     e.preventDefault();
+    await setLoading(true);
     const login = await logInUser(inputs.email, inputs.password);
     if (login.data) {
       await dispatch(userData());
@@ -110,10 +110,9 @@ const Login = () => {
                 <form className={`form`} onSubmit={onSubmit}>
                   <TextInputStyled
                     type="email"
-                    name="email"
+                    code="email"
                     placeHolder={windowCopies[language].email}
                     error={false}
-                    readOnly={true}
                     onChangeFunction={handleChange}
                   />
 
@@ -132,8 +131,8 @@ const Login = () => {
 
                     <input
                       className={`buttonSubmit`}
-                      type="submit"
                       onClick={onSubmit}
+                      type="submit"
                       value={windowCopies[language].loginButton}
                       disabled={false}
                     />

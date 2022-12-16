@@ -5,26 +5,26 @@ import { LargeInputStyled } from "../../inputs/largeTextInput/styledInput.jsx";
 import { DoubleInputStyled } from "../../inputs/doubleInput/styledDoubleInput.jsx";
 import { ZoomListInputStyled } from "../../inputs/zoomListInput/styledList";
 import { CheckboxInputStyled } from "../../inputs/checkboxInput/styledInput";
-export const inputSwitch = (field) => {
+export const inputSwitch = (field, value) => {
   switch (field.fieldtype) {
     case "inputText": {
-      return <TextInputStyled {...field} />;
+      return <TextInputStyled {...field} value={value} />;
     }
     case "checkbox": {
-      return <CheckboxInputStyled {...field} />;
+      return <CheckboxInputStyled {...field} value={value} />;
     }
     case "list": {
-      return <ListInputStyled {...field} />;
+      return <ListInputStyled {...field} value={value} />;
     }
     case "largeInputText": {
-      return <LargeInputStyled {...field} />;
+      return <LargeInputStyled {...field} value={value} />;
     }
 
     case "zoomListInputStyled": {
-      return <ZoomListInputStyled {...field} />;
+      return <ZoomListInputStyled {...field} value={value} />;
     }
     case "double-input": {
-      return <DoubleInputStyled {...field} />;
+      return <DoubleInputStyled {...field} value={value} />;
     }
     default:
       return "nothing to show";

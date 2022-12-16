@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./navbar.css";
 import NavItem from "../navItem/navItem";
 import arrows from "../../assets/arrows-nav.svg";
-import navBarData from "./navBarData";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
+  const userMenu = useSelector((state) => state.userData.menu);
 
   return (
     <nav className={`layout-navbar-closed ${open ? "layout-navbar-open" : ""}`}>
@@ -18,7 +19,7 @@ const NavBar = () => {
       >
         <img src={arrows} className={`arrow-closed ${open ? "arrow-open" : ""}`} alt="" />
       </div>
-      {navBarData.map((item, index) => (
+      {userMenu.map((item, index) => (
         <div
           key={index}
           onClick={() => {
@@ -28,9 +29,9 @@ const NavBar = () => {
           <NavItem
             index={index}
             active={active}
-            icon={item.icon}
-            title={item.title}
-            options={item.options}
+            icon={item.imageurl}
+            title={item.name}
+            options={item.sons}
             open={open}
           />
         </div>

@@ -29,21 +29,21 @@ const App = () => (
       <Route
         path="/:workWin"
         element={
-          //<ProtectedRoute>
-          <Layout>
-            <WorkTable />
-          </Layout>
-          //</ProtectedRoute>
+          <ProtectedRoute>
+            <Layout>
+              <WorkTable />
+            </Layout>
+          </ProtectedRoute>
         }
       />
       <Route
         path="/"
         element={
-          //<ProtectedRoute>
-          <Layout>
-            <Home />
-          </Layout>
-          //</ProtectedRoute>
+          <ProtectedRoute>
+            <Layout>
+              <Home />
+            </Layout>
+          </ProtectedRoute>
         }
       />
     </Routes>

@@ -76,6 +76,7 @@ exports.logInUser = async (username, password) => {
     },
   });
   try {
+    console.log("is triggering the login user", username, password);
     const user = await Auth.signIn(username, password);
     return {
       message: "signIn succesfull",
@@ -97,6 +98,7 @@ exports.isLogged = async () => {
   });
   try {
     const user = await Auth.currentAuthenticatedUser();
+    console.log("is triggering this");
     return {
       message: "signIn succesfull",
       data: user,
@@ -106,4 +108,22 @@ exports.isLogged = async () => {
   }
 };
 
-Auth.currentAuthenticatedUser();
+exports.logOut = async () => {
+  Amplify.configure({
+    Auth: {
+      userPoolId: process.env.REACT_APP_AWS_USER_POOL_ID,
+      region: process.env.REACT_APP_AWS_REGION,
+      userPoolWebClientId: process.env.REACT_APP_AWS_CLIENT_ID,
+      authenticationFlowType: "USER_PASSWORD_AUTH",
+    },
+  });
+  try {
+    const response = await Auth.signOut();
+    return {
+      message: "signOut succesfull",
+      data: response,
+    };
+  } catch (error) {
+    return "sign out failed", error;
+  }
+};

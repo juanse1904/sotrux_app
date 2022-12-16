@@ -7,7 +7,8 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        const user = isLogged();
+        const user = await isLogged();
+        console.log("checking loggedin", user);
         if (user.data) {
           setLoggedIn(true);
         } else {
@@ -17,7 +18,7 @@ const ProtectedRoute = ({ children }) => {
         setLoggedIn(false);
       }
     })();
-  });
+  }, []);
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;

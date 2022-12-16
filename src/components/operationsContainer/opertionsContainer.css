@@ -3,7 +3,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
   margin: 0;
   height: 55px;
   border: 1px solid #e6e8f1;
@@ -27,4 +26,11 @@
 }
 .options-button-icon {
   width: 45%;
+}
+.operation-icon {
+  font-size: 35px;
+  color: white;
+}
+.import-button {
+  text-decoration: none;
 }

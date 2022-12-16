@@ -224,18 +224,19 @@ form {
   outline: 0;
 }
 
-.buttonSubmit {
-  width: 45%;
-  height: 55px;
-  font-size: 14px;
+.buttonSubmit,
+.resend-button {
+  width: 40%;
+  height: 45px;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 16px;
   color: #fff;
   background-color: #cc912e;
-  border-radius: 3px;
+  border-radius: 6px;
   border: none;
-  box-shadow: 0px 12px 35px rgba(52, 77, 178, 0.340636);
   cursor: pointer;
-  margin-top: 20px;
+  margin: 15px 0;
 }
 
 .buttonDisabled {
@@ -250,7 +251,6 @@ form {
   background-color: #ff8fab;
   border-radius: 3px;
   border: none;
-  box-shadow: 0px 12px 35px rgba(52, 77, 178, 0.340636);
 }
 @media (max-width: 720px) and (orientation: portrait) {
   .sub2,

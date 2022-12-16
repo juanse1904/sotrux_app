@@ -7,13 +7,31 @@ const slice = createSlice({
   initialState: { tablesCounter: 0, activeTabs: [] },
   reducers: {
     createModalTable: (state, action) => {
+      const newSubTabs = action.payload.shape.body.tabs.map((subTab) => {
+        const headers = subTab.fields;
+        const tableHeaders = [];
+        headers.forEach((header) => {
+          const objectHeader = {
+            id: header.code,
+            numeric: header.fieldtype === "numericInputText",
+            disablePadding: false,
+            label: header.name,
+          };
+          tableHeaders.push(objectHeader);
+        });
+        return {
+          ...subTab,
+          tableHeaders,
+          tableData: action.payload.data.body.data,
+        };
+      });
       const newTab = {
         tableCount: state.tablesCounter + 1,
         idTab: `modal-${action.payload.window_data.id}-${state.tablesCounter + 1}`,
         isGrid: false,
         indexTab: 0,
         name: action.payload.shape.body.name,
-        subTabs: action.payload.shape.body.tabs,
+        subTabs: newSubTabs,
       };
       state["activeTabs"] = [...state["activeTabs"], newTab];
       state.tablesCounter = state.tablesCounter + 1;
@@ -39,9 +57,11 @@ const { createModalTable, updateModalIndexTab } = slice.actions;
 
 export const addModalTable = (window_data) => async (dispatch) => {
   try {
-    const data = await fetch(`${URL}/window?window=${window_data.id}&language=${window_data.lang}`);
-    const shape = await data.json();
-    dispatch(createModalTable({ shape, window_data }));
+    const callShape = await fetch(`${URL}/window?window=${window_data.id}&language=${window_data.lang}`);
+    const shape = await callShape.json();
+    const callData = await fetch(`${URL}/window/data?window=${window_data.id}&language=${window_data.lang}`);
+    const data = await callData.json();
+    dispatch(createModalTable({ shape, data, window_data }));
   } catch (e) {
     return console.error(e.message);
   }

@@ -1,73 +1,75 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { CSVLink } from "react-csv";
 import { updateViewTab } from "../../ducks/tabs";
 import "./opertionsContainer.css";
-import newIcon from "../../assets/options-add-icon.svg";
-import saveIcon from "../../assets/options-save-icon.svg";
-import deleteIcon from "../../assets/options-delete-icon.svg";
-import refreshIcon from "../../assets/options-refresh-icon.svg";
-import searchIcon from "../../assets/options-search-icon.svg";
-import gridIcon from "../../assets/options-grid-icon.svg";
-import downloadIcon from "../../assets/options-download-icon.svg";
+
 const OperationsContainer = () => {
   const dispatch = useDispatch();
   const activeView = useSelector((state) => state.activeView.idView);
   const tableInView = useSelector((state) => state.Tabs.activeTabs).filter((tab) => tab.idTab === activeView)[0];
-  console.log("table in view insied operator", tableInView);
+  const importData = tableInView ? tableInView.subTabs[tableInView.indexTab].tableData : [];
   const isGrid = false;
   const options = [
     {
-      icon: newIcon,
+      icon: "new",
       function: () => {
         console.log("adding new");
       },
     },
     {
-      icon: saveIcon,
+      icon: "save",
       function: () => {
         console.log("saving a record");
       },
     },
     {
-      icon: deleteIcon,
+      icon: "delete",
       function: () => {
         console.log("deleting a  record");
       },
     },
     {
-      icon: refreshIcon,
+      icon: "refresh",
       function: console.log("refresh data"),
     },
     {
-      icon: searchIcon,
+      icon: "search",
       function: () => console.log("search  data from DB"),
     },
 
     {
-      icon: gridIcon,
+      icon: "grid",
       function: () => {
         dispatch(updateViewTab(activeView));
       },
     },
 
     {
-      icon: downloadIcon,
+      icon: "export",
       function: console.log("download data"),
     },
   ];
   const ButtonOperation = ({ icon, onclickFunction }) => {
     return (
       <button
-        className={`options-button ${isGrid && icon === gridIcon ? "options-button-disabled" : ""}`}
+        className={`options-button ${isGrid && icon === "grid" ? "options-button-disabled" : ""}`}
         onClick={onclickFunction}
       >
-        <img src={icon} alt="" className="options-button-icon" />
+        <span className={`ico icon-icon-${icon} operation-icon`}></span>
       </button>
     );
   };
   return (
     <div className="buttons-container">
       {options.map((option, index) => {
+        if (option.icon === "export") {
+          return (
+            <CSVLink data={importData} filename={`${activeView}-sotrux.csv`} className="import-button">
+              <ButtonOperation key={index} icon={option.icon} onclickFunction={option.function} />
+            </CSVLink>
+          );
+        }
         return <ButtonOperation key={index} icon={option.icon} onclickFunction={option.function} />;
       })}
     </div>

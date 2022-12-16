@@ -16,6 +16,7 @@
     "aws-amplify": "^4.3.32",
     "aws-sdk": "^2.1198.0",
     "react": "^18.2.0",
+    "react-csv": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-draggable-tab": "^0.10.1",
     "react-redux": "^8.0.2",

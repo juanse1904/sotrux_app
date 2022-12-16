@@ -13,10 +13,19 @@ const NavItem = ({ icon, title, open, active, index, options }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const createAndShowTab = async (idtab) => {
+  const icons = {
+    i0001: "settings",
+    i0002: "inventory",
+    i0003: "people",
+    i0004: "machine",
+    i0005: "work-win",
+    i0006: "process",
+    i0007: "inform",
+  };
+  const createAndShowTab = (idtab) => {
     const identifier = `${idtab}-${currentIndex + 1}`;
-    await dispatch(addNewTab({ id: idtab, lang: "es" }));
-    await dispatch(sendActiveViewId(identifier));
+    dispatch(addNewTab({ id: idtab, lang: "es" }));
+    dispatch(sendActiveViewId(identifier));
     history(`/${identifier}`);
   };
 
@@ -24,7 +33,7 @@ const NavItem = ({ icon, title, open, active, index, options }) => {
     <div className="nav-option">
       <div className="nav-item">
         <div className="nav-item-icon">
-          <img className={isActive ? "nav-item-icon-active" : "nav-item-icon"} src={icon.src} alt={icon.alt} />
+          <span className={`ico icon-icon-${icons[icon]} navbar-icon ${isActive ? "navbar-icon-active" : ""}`}></span>
         </div>
         <div className={`nav-item-title-container-hidden ${open ? "nav-item-title-container" : ""}`}>
           <p className={`nav-item-title ${open ? "title-open" : ""}`}>{title}</p>
@@ -47,15 +56,16 @@ const NavItem = ({ icon, title, open, active, index, options }) => {
       </div>
       <div className={`item-list ${isOpen && isActive && open ? "item-list-open" : ""}`}>
         {options.map((option, index) => (
-          <p
-            onClick={() => {
-              createAndShowTab(option.sendTo);
-            }}
-            className={`item-list-option ${isOpen && isActive ? "item-list-option-open" : ""}`}
+          <div
             key={index}
+            className="item-list-container"
+            onClick={() => {
+              createAndShowTab(option.action);
+            }}
           >
-            {option.name}
-          </p>
+            <span className={`ico icon-icon-${icons[option.icon]} icon-children`}></span>
+            <p className={`item-list-option ${isOpen && isActive ? "item-list-option-open" : ""}`}>{option.name}</p>
+          </div>
         ))}
       </div>
     </div>

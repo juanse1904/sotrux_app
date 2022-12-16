@@ -15,6 +15,7 @@ import worldIcon from "../../assets/world-icon.svg";
 
 const Login = () => {
   const history = useNavigate();
+  const [localEmail, setLocalEmail] = useState(" ");
   const [language, setLangugage] = useState("EN");
   const [loading, setLoading] = useState(true);
   const [upperCase, setUpperCase] = useState(false);
@@ -24,8 +25,7 @@ const Login = () => {
   const [inputs, setInputs] = useState({});
   const windowCopies = useSelector((state) => state.publicWindows.user_confirmation);
   const dispatch = useDispatch();
-  const search = useLocation().search;
-  const lng = new URLSearchParams(search).get("lng");
+  const queryParams = useLocation().search;
 
   const handleChange = (input) => {
     const name = input.name;
@@ -59,7 +59,7 @@ const Login = () => {
   const onSubmit = async () => {
     setLoading(true);
     try {
-      const verification = await confirmSignUp(inputs.email, inputs.code);
+      const verification = await confirmSignUp(localEmail, inputs.code);
       if (verification.$response?.httpResponse?.statusCode !== 200) {
         history("/validation-error");
         throw "is not possible verificate the account";
@@ -78,7 +78,7 @@ const Login = () => {
   const resendCode = async () => {
     setLoading(true);
     try {
-      const resend = await newCode(inputs.email);
+      const resend = await newCode(localEmail);
       if (resend.$response?.httpResponse?.statusCode !== 200) {
         history("/validation-error");
         throw "was not possible resend the code, try again";
@@ -94,11 +94,16 @@ const Login = () => {
     const callCopies = async () => {
       await dispatch(publicCopies("user_confirmation"));
       await setLoading(false);
-      if (lng === "es") {
-        setLangugage("ES");
-      }
     };
     callCopies();
+
+    const decodeUrlParams = () => {
+      const encodedParams = queryParams.split("?")[1];
+      const decodeParams = JSON.parse(decodeURIComponent(escape(window.atob(encodedParams))));
+      setLangugage(decodeParams.lng === "es" ? "ES" : "EN");
+      setLocalEmail(decodeParams.email);
+    };
+    decodeUrlParams();
   }, []);
 
   return (
@@ -163,6 +168,7 @@ const Login = () => {
                   name="email"
                   placeHolder={windowCopies[language].email}
                   error={false}
+                  value={localEmail}
                   readOnly={true}
                   onChangeFunction={handleChange}
                 />
@@ -173,9 +179,10 @@ const Login = () => {
                   error={false}
                   onChangeFunction={handleChange}
                 />
-                <div onClick={resendCode} className="label_resend">
-                  <p>{windowCopies[language].resendCode}</p>
-                </div>
+                <button className="resend-button" onClick={resendCode}>
+                  {windowCopies[language].resendCode}
+                </button>
+
                 <PasswordInputStyled
                   name="password"
                   type="password"

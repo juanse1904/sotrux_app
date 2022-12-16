@@ -1,15 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
-* {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-}
-
 @font-face {
   font-family: "sotrux-icons";
-  src: url("../Lib/sotrux-font/fonts/sotrux-icons.ttf?ju6jne") format("truetype"),
-    url("../Lib/sotrux-font/fonts/sotrux-icons.woff?ju6jne") format("woff"),
-    url("../Lib/sotrux-font/fonts/sotrux-icons.svg?ju6jne#sotrux-icons") format("svg");
+  src: url("fonts/sotrux-icons.ttf?ju6jne") format("truetype"), url("fonts/sotrux-icons.woff?ju6jne") format("woff"),
+    url("fonts/sotrux-icons.svg?ju6jne#sotrux-icons") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;

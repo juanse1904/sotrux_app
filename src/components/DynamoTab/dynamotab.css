@@ -1,7 +1,11 @@
 .work-table {
+  position: absolute;
   display: flex;
+  top: 102px;
+  right: 0;
   flex-direction: row;
   width: 100%;
+  height: calc(100% - 102px);
 }
 .sub-tabs {
   display: flex;
@@ -40,14 +44,17 @@
   box-shadow: inset 0px 10px 10px rgba(204, 145, 46, 0.25);
   display: grid;
   padding: 40px;
+  padding-bottom: 10px;
   border-radius: 0 0 15px 15px;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: 40px;
   z-index: 7;
+  height: calc(100% - 50px);
   border: 1px solid #cc912e;
   grid-auto-rows: minmax(20px, auto);
 }
 
 .viewContainer {
-  width: 75%;
+  width: 80%;
+  height: 98%;
 }

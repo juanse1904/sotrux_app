@@ -9,7 +9,7 @@
   transition: width 0.5s;
 }
 .layout-navbar-open {
-  width: 220px;
+  width: 250px;
 }
 .arrow-collapse {
   display: flex;

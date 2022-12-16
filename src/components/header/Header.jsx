@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import logoSotrux from "../../assets/sotrux-logo.svg";
 import bellIcon from "../../assets/bell-icon.svg";
 import dialogIcon from "../../assets/dialog-icon.svg";
 import xClose from "../../assets/x-close.svg";
+import { logOut } from "../../aws-utils/aws-utils";
 import burguerIcon from "../../assets/burguer-icon.svg";
 import "./header.css";
 const Header = () => {
   let [firstClick, setFirstClick] = useState(false);
   let [showed, setShowed] = useState(false);
   let [closed, setClosed] = useState(true);
+  const history = useNavigate();
   const dataUser = useSelector((state) => state.userData);
+
+  const logOutAction = async () => {
+    await logOut();
+    history("/login");
+  };
   return (
     <header>
       <div className="logo-stam">
@@ -19,6 +27,9 @@ const Header = () => {
       <div className="header-section-2">
         <img src={dialogIcon} alt="dialog-icon-feedback" />
         <p>¿Qué nos hace falta?</p>
+      </div>
+      <div className="header-section-2">
+        <button onClick={logOutAction}>Cerrar sesión</button>
       </div>
       <div className="header-user-options">
         <p>{dataUser.ad_clientname} | </p>

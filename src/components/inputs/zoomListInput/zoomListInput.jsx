@@ -1,39 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MenuItem from "@mui/material/MenuItem";
 import { useDispatch, useSelector } from "react-redux";
-import { addModalTable } from "../../../ducks/modalData";
+import { useNavigate } from "react-router-dom";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import ArrowIcon from "./arrowIcon";
+import { addNewTab } from "../../../ducks/tabs";
+import { sendActiveViewId } from "../../../ducks/activeView";
 import zoomIcon from "../../../assets/zoom-icon.svg";
-import Modal from "../../ComponentModal/Modal";
 export const ZoomListInput = ({ name, options, className, value, onChangeFunction, tableToZoom }) => {
-  const [currentValue, setCurrentValue] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  const modalCounter = useSelector((state) => state.modalTabs.tablesCounter);
-  const modalIdentifier = `modal-${tableToZoom}-${modalCounter}`;
+  const currentIndex = useSelector((state) => state.Tabs.tablesCounter);
   const dispatch = useDispatch();
-  const togglePopup = async () => {
-    await dispatch(addModalTable({ id: tableToZoom, lang: "es" }));
-    setIsOpen(!isOpen);
+  const history = useNavigate();
+  const createAndShowTab = (idtab) => {
+    const identifier = `${idtab}-${currentIndex + 1}`;
+    dispatch(addNewTab({ id: idtab, lang: "es" }));
+    dispatch(sendActiveViewId(identifier));
+    history(`/${identifier}`);
   };
 
   const handleChange = (event) => {
-    setCurrentValue(event.target.value);
     onChangeFunction({
       name: name,
       value: event.target.value,
     });
   };
 
-  useEffect(() => {
-    setCurrentValue(value);
-  }, [value]);
-
   return (
     <div className={className}>
-      <div className="zoomButton" onClick={togglePopup}>
+      <div
+        className="zoomButton"
+        onClick={() => {
+          createAndShowTab(tableToZoom);
+        }}
+      >
         <img src={zoomIcon} alt="" />
       </div>
       <FormControl fullWidth>
@@ -41,7 +42,7 @@ export const ZoomListInput = ({ name, options, className, value, onChangeFunctio
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={currentValue}
+          value={value}
           label={name}
           IconComponent={ArrowIcon}
           onChange={handleChange}
@@ -51,9 +52,9 @@ export const ZoomListInput = ({ name, options, className, value, onChangeFunctio
               {option}
             </MenuItem>
           ))}
+          <MenuItem value={value}>{value}</MenuItem>
         </Select>
       </FormControl>
-      {isOpen && <Modal handleClose={togglePopup} workWin={modalIdentifier} />}
     </div>
   );
 };

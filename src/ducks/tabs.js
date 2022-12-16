@@ -22,6 +22,7 @@ const slice = createSlice({
         return {
           ...subTab,
           tableHeaders,
+          tableData: action.payload.data.body.data,
         };
       });
       const newTab = {
@@ -72,9 +73,11 @@ const { createNewTab, updateIndexTab, changeViewTab, deleteActiveTab } = slice.a
 
 export const addNewTab = (window_data) => async (dispatch) => {
   try {
-    const data = await fetch(`${URL}/window?window=${window_data.id}&language=${window_data.lang}`);
-    const shape = await data.json();
-    dispatch(createNewTab({ shape, window_data }));
+    const callShape = await fetch(`${URL}/window?window=${window_data.id}&language=${window_data.lang}`);
+    const shape = await callShape.json();
+    const callData = await fetch(`${URL}/window/data?window=${window_data.id}&language=${window_data.lang}`);
+    const data = await callData.json();
+    dispatch(createNewTab({ shape, data, window_data }));
   } catch (e) {
     return console.error(e.message);
   }
