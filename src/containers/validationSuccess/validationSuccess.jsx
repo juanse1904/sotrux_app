@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { publicCopies } from "../../ducks/publicCopies";
 import MessageIlustration from "../../assets/successMessage-ilustration.svg";
 import LoadCircle from "../../components/loadCircle/LoadCircle";
@@ -11,7 +11,6 @@ const ValidationSuccess = () => {
 
   const [loading, setLoading] = useState(true);
 
-  const windowCopies = useSelector((state) => state.publicWindows.user_confirmation);
   const dispatch = useDispatch();
 
   useEffect(() => {

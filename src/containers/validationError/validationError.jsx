@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { publicCopies } from "../../ducks/publicCopies";
 import MessageIlustration from "../../assets/errorMessage-ilustration.svg";
@@ -11,7 +11,6 @@ const ValidationError = () => {
 
   const [loading, setLoading] = useState(true);
 
-  const windowCopies = useSelector((state) => state.publicWindows.user_confirmation);
   const dispatch = useDispatch();
 
   useEffect(() => {

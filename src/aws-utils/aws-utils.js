@@ -1,7 +1,7 @@
 const aws = require("aws-sdk");
 const { Amplify, Auth } = require("aws-amplify");
 
-exports.confirmSignUp = async (email, code) => {
+export const confirmSignUp = async (email, code) => {
   try {
     const cognito = new aws.CognitoIdentityServiceProvider({
       apiVersion: "2016-04-18",
@@ -24,7 +24,7 @@ exports.confirmSignUp = async (email, code) => {
   }
 };
 
-exports.newCode = async (email) => {
+export const newCode = async (email) => {
   try {
     const cognito = new aws.CognitoIdentityServiceProvider({
       apiVersion: "2016-04-18",
@@ -46,7 +46,7 @@ exports.newCode = async (email) => {
   }
 };
 
-exports.updatePassword = async (email, password) => {
+export const updatePassword = async (email, password) => {
   const cognito = new aws.CognitoIdentityServiceProvider({
     apiVersion: "2016-04-18",
     region: process.env.REACT_APP_AWS_REGION,
@@ -66,7 +66,7 @@ exports.updatePassword = async (email, password) => {
   return cognitoResponse;
 };
 
-exports.logInUser = async (username, password) => {
+export const logInUser = async (username, password) => {
   Amplify.configure({
     Auth: {
       userPoolId: process.env.REACT_APP_AWS_USER_POOL_ID,
@@ -87,7 +87,7 @@ exports.logInUser = async (username, password) => {
   }
 };
 
-exports.isLogged = async () => {
+export const isLogged = async () => {
   Amplify.configure({
     Auth: {
       userPoolId: process.env.REACT_APP_AWS_USER_POOL_ID,
@@ -108,7 +108,7 @@ exports.isLogged = async () => {
   }
 };
 
-exports.logOut = async () => {
+export const logOut = async () => {
   Amplify.configure({
     Auth: {
       userPoolId: process.env.REACT_APP_AWS_USER_POOL_ID,
