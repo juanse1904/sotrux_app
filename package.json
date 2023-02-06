@@ -25,7 +25,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
-    "react-scripts": "^5.0.1",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -47,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "react-scripts": "^5.0.1",
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
