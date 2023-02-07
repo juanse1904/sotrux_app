@@ -65,7 +65,7 @@ const OperationsContainer = () => {
       {options.map((option, index) => {
         if (option.icon === "export") {
           return (
-            <CSVLink data={importData} filename={`${activeView}-sotrux.csv`} className="import-button">
+            <CSVLink data={importData} key={index} filename={`${activeView}-sotrux.csv`} className="import-button">
               <ButtonOperation key={index} icon={option.icon} onclickFunction={option.function} />
             </CSVLink>
           );

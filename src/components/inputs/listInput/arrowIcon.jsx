@@ -7,8 +7,6 @@ const ArrowIcon = (props) => {
       style={{ top: "0", right: "0" }}
       width="55"
       height="55"
-      right="0"
-      top="0"
       viewBox="0 0 45 45"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
