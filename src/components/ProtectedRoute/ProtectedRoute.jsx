@@ -3,7 +3,7 @@ import { isLogged } from "../../aws-utils/aws-utils";
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const [isAuthenticated, setLoggedIn] = useState(true);
+  const [isAuthenticated, setLoggedIn] = useState(false);
   useEffect(() => {
     (async () => {
       try {
