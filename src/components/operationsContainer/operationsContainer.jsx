@@ -1,76 +1,88 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { CSVLink } from "react-csv";
-import { updateViewTab } from "../../ducks/tabs";
-import "./opertionsContainer.css";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { CSVLink } from 'react-csv';
+import { updateViewTab } from '../../ducks/tabs';
+import './opertionsContainer.css';
 
+const ButtonOperation = ({ icon, onclickFunction, isGrid }) => (
+  <button
+    type="button"
+    className={`options-button ${isGrid && icon === 'grid' ? 'options-button-disabled' : ''}`}
+    onClick={onclickFunction}
+  >
+    <span className={`ico icon-icon-${icon} operation-icon`} />
+  </button>
+);
 const OperationsContainer = () => {
   const dispatch = useDispatch();
   const activeView = useSelector((state) => state.activeView.idView);
-  const tableInView = useSelector((state) => state.Tabs.activeTabs).filter((tab) => tab.idTab === activeView)[0];
+  const tableInView = useSelector(
+    (state) => state.Tabs.activeTabs,
+  ).filter((tab) => tab.idTab === activeView)[0];
   const importData = tableInView ? tableInView.subTabs[tableInView.indexTab].tableData : [];
   const isGrid = false;
   const options = [
     {
-      icon: "new",
+      icon: 'new',
       function: () => {
-        console.log("adding new");
+        console.log('adding new');
       },
     },
     {
-      icon: "save",
+      icon: 'save',
       function: () => {
-        console.log("saving a record");
+        console.log('saving a record');
       },
     },
     {
-      icon: "delete",
+      icon: 'delete',
       function: () => {
-        console.log("deleting a  record");
+        console.log('deleting a  record');
       },
     },
     {
-      icon: "refresh",
-      function: console.log("refresh data"),
+      icon: 'refresh',
+      function: console.log('refresh data'),
     },
     {
-      icon: "search",
-      function: () => console.log("search  data from DB"),
+      icon: 'search',
+      function: () => console.log('search  data from DB'),
     },
 
     {
-      icon: "grid",
+      icon: 'grid',
       function: () => {
         dispatch(updateViewTab(activeView));
       },
     },
 
     {
-      icon: "export",
-      function: console.log("download data"),
+      icon: 'export',
+      function: console.log('download data'),
     },
   ];
-  const ButtonOperation = ({ icon, onclickFunction }) => {
-    return (
-      <button
-        className={`options-button ${isGrid && icon === "grid" ? "options-button-disabled" : ""}`}
-        onClick={onclickFunction}
-      >
-        <span className={`ico icon-icon-${icon} operation-icon`}></span>
-      </button>
-    );
-  };
   return (
     <div className="buttons-container">
-      {options.map((option, index) => {
-        if (option.icon === "export") {
+      {options.map((option) => {
+        if (option.icon === 'export') {
           return (
-            <CSVLink data={importData} key={index} filename={`${activeView}-sotrux.csv`} className="import-button">
-              <ButtonOperation key={index} icon={option.icon} onclickFunction={option.function} />
+            <CSVLink data={importData} key={option.id} filename={`${activeView}-sotrux.csv`} className="import-button">
+              <ButtonOperation
+                isGrid={isGrid}
+                key={option.id}
+                icon={option.icon}
+                onclickFunction={option.function}
+              />
             </CSVLink>
           );
         }
-        return <ButtonOperation key={index} icon={option.icon} onclickFunction={option.function} />;
+        return (
+          <ButtonOperation
+            key={option.id}
+            icon={option.icon}
+            onclickFunction={option.function}
+          />
+        );
       })}
     </div>
   );

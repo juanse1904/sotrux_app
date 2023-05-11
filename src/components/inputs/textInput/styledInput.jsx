@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import TextInput from "./Input";
+import styled from 'styled-components';
+import TextInput from './Input';
 
-export const TextInputStyled = styled(TextInput)`
+const TextInputStyled = styled(TextInput)`
   display: flex;
   position: relative;
   flex-direction: column;
@@ -22,3 +22,5 @@ export const TextInputStyled = styled(TextInput)`
     width: 100%;
   }
 `;
+
+export default TextInputStyled;

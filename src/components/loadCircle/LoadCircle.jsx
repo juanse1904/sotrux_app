@@ -1,20 +1,18 @@
-import React from "react";
+import React from 'react';
 
-import "./loadCircle.css";
+import './loadCircle.css';
 
-const LoadCircle = () => {
-  return (
-    <div className="lds-roller">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  );
-};
+const LoadCircle = () => (
+  <div className="lds-roller">
+    <div />
+    <div />
+    <div />
+    <div />
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+);
 
 export default LoadCircle;

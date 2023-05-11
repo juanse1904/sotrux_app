@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import ZoomListInput from "./zoomListInput";
+import styled from 'styled-components';
+import { ZoomListInput } from './zoomListInput';
 
-export const ZoomListInputStyled = styled(ZoomListInput)`
+const ZoomListInputStyled = styled(ZoomListInput)`
   display: flex;
   flex-direction: row;
   grid-column: ${(props) => props.columnposition};
@@ -19,3 +19,4 @@ export const ZoomListInputStyled = styled(ZoomListInput)`
     justify-content: center;
   }
 `;
+export default ZoomListInputStyled;

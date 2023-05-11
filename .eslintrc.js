@@ -1,18 +1,21 @@
 module.exports = {
   env: {
+    node: true,
     browser: true,
     es2021: true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'airbnb'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  plugins: ["react"],
+  plugins: ['react'],
   rules: {
-    "react/prop-types": 0,
+    'react/prop-types': 1,
+    'react/function-component-definition': 0,
+    'import/no-extraneous-dependencies': 'off',
   },
 };

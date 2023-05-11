@@ -1,8 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import TextField from "@mui/material/TextField";
+import TextField from '@mui/material/TextField';
 
-const TextInput = ({ readOnly, name, className, value, error, errorMessage, onChangeFunction, code }) => {
+const TextInput = ({
+  readOnly, name, className, value, error, errorMessage, onChangeFunction, code,
+}) => {
   const inputHandleChange = (event) => {
     onChangeFunction({
       name: code,
@@ -11,25 +13,23 @@ const TextInput = ({ readOnly, name, className, value, error, errorMessage, onCh
   };
 
   return (
-    <>
-      <div className={`${className} ${error ? "input-error" : ""}`}>
-        <TextField
-          id="outlined-basic"
-          fullWidth
-          value={value}
-          margin="none"
-          name={name}
-          InputProps={{
-            readOnly,
-          }}
-          onChange={inputHandleChange}
-          label={name}
-          variant="outlined"
-        />
+    <div className={`${className} ${error ? 'input-error' : ''}`}>
+      <TextField
+        id="outlined-basic"
+        fullWidth
+        value={value}
+        margin="none"
+        name={name}
+        InputProps={{
+          readOnly,
+        }}
+        onChange={inputHandleChange}
+        label={name}
+        variant="outlined"
+      />
 
-        <p>{error && errorMessage}</p>
-      </div>
-    </>
+      <p>{error && errorMessage}</p>
+    </div>
   );
 };
 

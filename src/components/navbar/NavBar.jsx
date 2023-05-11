@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import "./navbar.css";
-import NavItem from "../navItem/navItem";
-import arrows from "../../assets/arrows-nav.svg";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import './navbar.css';
+import NavItem from '../navItem/navItem';
+import arrows from '../../assets/arrows-nav.svg';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -10,18 +10,20 @@ const NavBar = () => {
   const userMenu = useSelector((state) => state.userData.menu);
 
   return (
-    <nav className={`layout-navbar-closed ${open ? "layout-navbar-open" : ""}`}>
-      <div
+    <nav className={`layout-navbar-closed ${open ? 'layout-navbar-open' : ''}`}>
+      <button
+        type="button"
         onClick={() => {
           setOpen(!open);
         }}
         className="arrow-collapse"
       >
-        <img src={arrows} className={`arrow-closed ${open ? "arrow-open" : ""}`} alt="" />
-      </div>
+        <img src={arrows} className={`arrow-closed ${open ? 'arrow-open' : ''}`} alt="" />
+      </button>
       {userMenu.map((item, index) => (
-        <div
-          key={index}
+        <button
+          type="button"
+          key={item.id}
           onClick={() => {
             setActive(index);
           }}
@@ -34,7 +36,7 @@ const NavBar = () => {
             options={item.sons}
             open={open}
           />
-        </div>
+        </button>
       ))}
     </nav>
   );

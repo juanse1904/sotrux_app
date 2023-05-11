@@ -1,8 +1,8 @@
-import React from "react";
-import DynamoWin from "../components/DynamoTab/DynamicTab";
-import TabContainer from "../components/TabContainer/TabsContainer";
-import OperationsContainer from "../components/operationsContainer/operationsContainer";
-import { useParams } from "react-router";
+import React from 'react';
+import { useParams } from 'react-router';
+import DynamoWin from '../components/DynamoTab/DynamicTab';
+import TabContainer from '../components/TabContainer/TabsContainer';
+import OperationsContainer from '../components/operationsContainer/operationsContainer';
 
 const WorkTable = () => {
   const { workWin } = useParams();

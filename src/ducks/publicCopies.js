@@ -1,9 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
-const URL = process.env.ERP_API || "http://localhost:8080";
+const URL = process.env.ERP_API || 'http://localhost:8080';
 // Slice
 const slice = createSlice({
-  name: "publicCopies",
+  name: 'publicCopies',
   initialState: {},
   reducers: {
     getPublicCopies: (state, action) => {
@@ -15,7 +16,7 @@ const slice = createSlice({
         });
         copies[lang.isocode] = langCopies;
       });
-      state[action.payload.window_id] = copies;
+      state[action.payload.windowId] = copies;
     },
   },
 });
@@ -24,11 +25,12 @@ export default slice.reducer;
 const { getPublicCopies } = slice.actions;
 // Call
 
-export const publicCopies = (window_id) => async (dispatch) => {
+export const publicCopies = (windowId) => async (dispatch) => {
   try {
-    const data = await fetch(`${URL}/window/public?value=${window_id}`);
+    const data = await fetch(`${URL}/window/public?value=${windowId}`);
     const response = await data.json();
-    dispatch(getPublicCopies({ response, window_id }));
+    dispatch(getPublicCopies({ response, windowId }));
+    return null;
   } catch (e) {
     return console.error(e.message);
   }

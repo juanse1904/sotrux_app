@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { isLogged } from "../../aws-utils/aws-utils";
-import { Navigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import { isLogged } from '../../aws-utils/aws-utils';
 
 const ProtectedRoute = ({ children }) => {
   const [isAuthenticated, setLoggedIn] = useState(false);
@@ -8,7 +8,7 @@ const ProtectedRoute = ({ children }) => {
     (async () => {
       try {
         const user = await isLogged();
-        console.log("checking loggedin", user);
+        console.log('checking loggedin', user);
         if (user.data) {
           setLoggedIn(true);
         } else {

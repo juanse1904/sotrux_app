@@ -1,9 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
-const URL = process.env.ERP_API || "http://localhost:8080";
+const URL = process.env.ERP_API || 'http://localhost:8080';
 // Slice
 const slice = createSlice({
-  name: "tabs",
+  name: 'tabs',
   initialState: { tablesCounter: 0, activeTabs: [] },
   reducers: {
     createNewTab: (state, action) => {
@@ -13,7 +14,7 @@ const slice = createSlice({
         headers.forEach((header) => {
           const objectHeader = {
             id: header.code,
-            numeric: header.fieldtype === "numericInputText",
+            numeric: header.fieldtype === 'numericInputText',
             disablePadding: false,
             label: header.name,
           };
@@ -27,37 +28,35 @@ const slice = createSlice({
       });
       const newTab = {
         tableCount: state.tablesCounter + 1,
-        idTab: `${action.payload.window_data.id}-${state.tablesCounter + 1}`,
+        idTab: `${action.payload.windowData.id}-${state.tablesCounter + 1}`,
         isGrid: false,
         indexTab: 0,
         name: action.payload.shape.body.name,
         subTabs: newSubTabs,
       };
-      state["activeTabs"] = [...state["activeTabs"], newTab];
-      state.tablesCounter = state.tablesCounter + 1;
+      state.activeTabs = [...state.activeTabs, newTab];
+      state.tablesCounter += 1;
     },
     changeViewTab: (state, action) => {
-      state["activeTabs"] = state["activeTabs"].map((tab) => {
+      state.activeTabs = state.activeTabs.map((tab) => {
         if (tab.idTab === action.payload) {
           return {
             ...tab,
             isGrid: !tab.isGrid,
           };
-        } else {
-          return tab;
         }
+        return tab;
       });
     },
     updateIndexTab: (state, action) => {
-      state["activeTabs"] = state["activeTabs"].map((tab) => {
+      state.activeTabs = state.activeTabs.map((tab) => {
         if (tab.idTab === action.payload.tab_id) {
           return {
             ...tab,
             indexTab: action.payload.newTabIndex,
           };
-        } else {
-          return tab;
         }
+        return tab;
       });
     },
     deleteActiveTab: (state, action) => {
@@ -68,27 +67,30 @@ const slice = createSlice({
 });
 export default slice.reducer;
 // Actions
-const { createNewTab, updateIndexTab, changeViewTab, deleteActiveTab } = slice.actions;
+const {
+  createNewTab, updateIndexTab, changeViewTab, deleteActiveTab,
+} = slice.actions;
 // Call
 
-export const addNewTab = (window_data) => async (dispatch) => {
+export const addNewTab = (windowData) => async (dispatch) => {
   try {
-    const callShape = await fetch(`${URL}/window?window=${window_data.id}&language=${window_data.lang}`);
+    const callShape = await fetch(`${URL}/window?window=${windowData.id}&language=${windowData.lang}`);
     const shape = await callShape.json();
-    const callData = await fetch(`${URL}/window/data?window=${window_data.id}&language=${window_data.lang}`);
+    const callData = await fetch(`${URL}/window/data?window=${windowData.id}&language=${windowData.lang}`);
     const data = await callData.json();
-    dispatch(createNewTab({ shape, data, window_data }));
+    dispatch(createNewTab({ shape, data, windowData }));
+    return null;
   } catch (e) {
     return console.error(e.message);
   }
 };
 
-export const changeIndexTab = (window_data) => (dispatch) => {
-  dispatch(updateIndexTab(window_data));
+export const changeIndexTab = (windowData) => (dispatch) => {
+  dispatch(updateIndexTab(windowData));
 };
-export const updateViewTab = (window_id) => (dispatch) => {
-  dispatch(changeViewTab(window_id));
+export const updateViewTab = (windowId) => (dispatch) => {
+  dispatch(changeViewTab(windowId));
 };
-export const removeActiveTab = (window_id) => (dispatch) => {
-  dispatch(deleteActiveTab(window_id));
+export const removeActiveTab = (windowId) => (dispatch) => {
+  dispatch(deleteActiveTab(windowId));
 };

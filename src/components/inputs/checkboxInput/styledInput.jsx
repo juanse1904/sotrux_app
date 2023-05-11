@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import CheckBoxInput from "./Input";
+import styled from 'styled-components';
+import CheckBoxInput from './Input';
 
-export const CheckboxInputStyled = styled(CheckBoxInput)`
+const CheckboxInputStyled = styled(CheckBoxInput)`
   display: flex;
   position: relative;
   flex-direction: column;
@@ -51,7 +51,7 @@ export const CheckboxInputStyled = styled(CheckBoxInput)`
     height: 20px;
     width: 35px;
     padding: 14px 5px;
-    border-bottom: 1px solid ${(props) => (props.error ? "#FF4D4D" : "#DCE2F0")};
+    border-bottom: 1px solid ${(props) => (props.error ? '#FF4D4D' : '#DCE2F0')};
   }
   .password-eye-icon {
     width: 20px;
@@ -67,3 +67,4 @@ export const CheckboxInputStyled = styled(CheckBoxInput)`
     width: 100%;
   }
 `;
+export default CheckboxInputStyled;

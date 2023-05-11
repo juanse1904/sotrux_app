@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import ListInput from "./ListInput";
+import styled from 'styled-components';
+import { ListInput } from './ListInput';
 
-export const ListInputStyled = styled(ListInput)`
+const ListInputStyled = styled(ListInput)`
   grid-column: ${(props) => props.columnposition};
   grid-row: ${(props) => props.rowposition};
 
@@ -58,3 +58,4 @@ export const ListInputStyled = styled(ListInput)`
     height: 350px;
   }
 `;
+export default ListInputStyled;

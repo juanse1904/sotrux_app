@@ -1,16 +1,16 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Amplify from "aws-amplify";
-import Layout from "../components/layout/Layout";
-import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
-import WorkTable from "../containers/workTable";
-import Login from "../containers/login/Login";
-import UserConfirmation from "../containers/userConfirmation/UserConfirmation";
-import ValidationError from "../containers/validationError/validationError";
-import ValidationSuccess from "../containers/validationSuccess/validationSuccess";
-import ValidationResend from "../containers/validationResend/validationResend";
-import Home from "../containers/Home";
-import "./index.css";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Amplify from 'aws-amplify';
+import Layout from '../components/layout/Layout';
+import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute';
+import WorkTable from '../containers/workTable';
+import Login from '../containers/login/Login';
+import UserConfirmation from '../containers/userConfirmation/UserConfirmation';
+import ValidationError from '../containers/validationError/validationError';
+import ValidationSuccess from '../containers/validationSuccess/validationSuccess';
+import ValidationResend from '../containers/validationResend/validationResend';
+import Home from '../containers/Home';
+import './index.css';
 
 Amplify.configure({
   aws_cognito_region: process.env.AWS_REGION,
@@ -28,23 +28,23 @@ const App = () => (
       <Route path="/resend-code-confirmation" element={<ValidationResend />} />
       <Route
         path="/:workWin"
-        element={
+        element={(
           <ProtectedRoute>
             <Layout>
               <WorkTable />
             </Layout>
           </ProtectedRoute>
-        }
+        )}
       />
       <Route
         path="/"
-        element={
+        element={(
           <ProtectedRoute>
             <Layout>
               <Home />
             </Layout>
           </ProtectedRoute>
-        }
+        )}
       />
     </Routes>
   </BrowserRouter>

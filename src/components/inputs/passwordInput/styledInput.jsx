@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import PasswordInput from "./Input";
+import styled from 'styled-components';
+import PasswordInput from './Input';
 
-export const PasswordInputStyled = styled(PasswordInput)`
+const PasswordInputStyled = styled(PasswordInput)`
   display: flex;
   position: relative;
   flex-direction: column;
@@ -51,7 +51,7 @@ export const PasswordInputStyled = styled(PasswordInput)`
     height: 20px;
     width: 35px;
     padding: 14px 5px;
-    border-bottom: 1px solid ${(props) => (props.error ? "#FF4D4D" : "#DCE2F0")};
+    border-bottom: 1px solid ${(props) => (props.error ? '#FF4D4D' : '#DCE2F0')};
   }
   .password-eye-icon {
     width: 20px;
@@ -67,3 +67,5 @@ export const PasswordInputStyled = styled(PasswordInput)`
     width: 100%;
   }
 `;
+
+export default PasswordInputStyled;

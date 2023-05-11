@@ -1,9 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
-const URL = process.env.ERP_API || "http://localhost:8080";
+const URL = process.env.ERP_API || 'http://localhost:8080';
 // Slice
 const slice = createSlice({
-  name: "modalTabs",
+  name: 'modalTabs',
   initialState: { tablesCounter: 0, activeTabs: [] },
   reducers: {
     createModalTable: (state, action) => {
@@ -13,7 +14,7 @@ const slice = createSlice({
         headers.forEach((header) => {
           const objectHeader = {
             id: header.code,
-            numeric: header.fieldtype === "numericInputText",
+            numeric: header.fieldtype === 'numericInputText',
             disablePadding: false,
             label: header.name,
           };
@@ -27,25 +28,24 @@ const slice = createSlice({
       });
       const newTab = {
         tableCount: state.tablesCounter + 1,
-        idTab: `modal-${action.payload.window_data.id}-${state.tablesCounter + 1}`,
+        idTab: `modal-${action.payload.windowData.id}-${state.tablesCounter + 1}`,
         isGrid: false,
         indexTab: 0,
         name: action.payload.shape.body.name,
         subTabs: newSubTabs,
       };
-      state["activeTabs"] = [...state["activeTabs"], newTab];
-      state.tablesCounter = state.tablesCounter + 1;
+      state.activeTabs = [...state.activeTabs, newTab];
+      state.tablesCounter += 1;
     },
     updateModalIndexTab: (state, action) => {
-      state["activeTabs"] = state["activeTabs"].map((tab) => {
+      state.activeTabs = state.activeTabs.map((tab) => {
         if (tab.idTab === action.payload.tab_id) {
           return {
             ...tab,
             indexTab: action.payload.newTabIndex,
           };
-        } else {
-          return tab;
         }
+        return tab;
       });
     },
   },
@@ -55,18 +55,19 @@ export default slice.reducer;
 const { createModalTable, updateModalIndexTab } = slice.actions;
 // Call
 
-export const addModalTable = (window_data) => async (dispatch) => {
+export const addModalTable = (windowData) => async (dispatch) => {
   try {
-    const callShape = await fetch(`${URL}/window?window=${window_data.id}&language=${window_data.lang}`);
+    const callShape = await fetch(`${URL}/window?window=${windowData.id}&language=${windowData.lang}`);
     const shape = await callShape.json();
-    const callData = await fetch(`${URL}/window/data?window=${window_data.id}&language=${window_data.lang}`);
+    const callData = await fetch(`${URL}/window/data?window=${windowData.id}&language=${windowData.lang}`);
     const data = await callData.json();
-    dispatch(createModalTable({ shape, data, window_data }));
+    dispatch(createModalTable({ shape, data, windowData }));
+    return null;
   } catch (e) {
     return console.error(e.message);
   }
 };
 
-export const changeModalIndexTab = (window_data) => (dispatch) => {
-  dispatch(updateModalIndexTab(window_data));
+export const changeModalIndexTab = (windowData) => (dispatch) => {
+  dispatch(updateModalIndexTab(windowData));
 };

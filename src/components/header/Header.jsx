@@ -1,23 +1,25 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
-import logoSotrux from "../../assets/sotrux-logo.svg";
-import bellIcon from "../../assets/bell-icon.svg";
-import dialogIcon from "../../assets/dialog-icon.svg";
-import xClose from "../../assets/x-close.svg";
-import { logOut } from "../../aws-utils/aws-utils";
-import burguerIcon from "../../assets/burguer-icon.svg";
-import "./header.css";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
+import classNames from 'classnames';
+import logoSotrux from '../../assets/sotrux-logo.svg';
+import bellIcon from '../../assets/bell-icon.svg';
+import dialogIcon from '../../assets/dialog-icon.svg';
+import xClose from '../../assets/x-close.svg';
+import { logOut } from '../../aws-utils/aws-utils';
+import burguerIcon from '../../assets/burguer-icon.svg';
+import './header.css';
+
 const Header = () => {
-  let [firstClick, setFirstClick] = useState(false);
-  let [showed, setShowed] = useState(false);
-  let [closed, setClosed] = useState(true);
+  const [firstClick, setFirstClick] = useState(false);
+  const [showed, setShowed] = useState(false);
+  const [closed, setClosed] = useState(true);
   const history = useNavigate();
   const dataUser = useSelector((state) => state.userData);
 
   const logOutAction = async () => {
     await logOut();
-    history("/login");
+    history('/login');
   };
   return (
     <header>
@@ -29,10 +31,15 @@ const Header = () => {
         <p>¿Qué nos hace falta?</p>
       </div>
       <div className="header-section-2">
-        <button onClick={logOutAction}>Cerrar sesión</button>
+        <button type="button" onClick={logOutAction}>Cerrar sesión</button>
       </div>
       <div className="header-user-options">
-        <p>{dataUser.ad_clientname} | </p>
+        <p>
+          {dataUser.ad_clientname}
+          {' '}
+          |
+          {' '}
+        </p>
         <span>{dataUser.rolename}</span>
         <img src="https://pbs.twimg.com/profile_images/1369450104445407234/VORjeSWO_400x400.jpg" alt="" />
       </div>
@@ -42,7 +49,8 @@ const Header = () => {
           <p>1</p>
         </div>
       </div>
-      <div
+      <button
+        type="button"
         className="burguer-icon"
         onClick={() => {
           setShowed(true);
@@ -51,18 +59,15 @@ const Header = () => {
         }}
       >
         <img src={burguerIcon} alt="" />
-      </div>
+      </button>
 
       <div
-        className={
-          !firstClick && !showed && closed
-            ? "homepage_hiden"
-            : showed && !closed
-            ? "homepage_mobile_options_show"
-            : !showed && closed
-            ? "homepage_mobile_options_hide"
-            : null
-        }
+        className={classNames({
+          homepage_hiden: !firstClick && !showed && closed,
+          homepage_mobile_options_show: showed && !closed,
+          homepage_mobile_options_hide: !showed && closed,
+
+        })}
       >
         <div className="options_subheader">
           <div className="options_subheader_itb_logo">
@@ -70,20 +75,24 @@ const Header = () => {
           </div>
 
           <div className="cancelx_container">
-            <img
-              src={xClose}
-              alt="close-menu-icon"
-              id="cancelx"
+            <button
               onClick={() => {
                 setShowed(false);
                 setClosed(true);
               }}
+              type="button"
+              aria-label="close header"
+            />
+            <img
+              src={xClose}
+              alt="close-menu-icon"
+              id="cancelx"
             />
           </div>
         </div>
-        <div className="options_subbody"></div>
+        <div className="options_subbody" />
         <div className="options_subfooter">
-          <div className="subfooter_line"></div>
+          <div className="subfooter_line" />
           <p>© IT&B SERVICES 2021, todos los derechos reservados.</p>
           <div className="options_subfooter__networks">
             <div className="options_subfooter__networks__item">

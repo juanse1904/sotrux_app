@@ -12,23 +12,26 @@
     "@syncfusion/ej2-react-navigations": "^20.2.45",
     "aws-amplify": "^4.3.32",
     "aws-sdk": "^2.1198.0",
+    "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-csv": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-draggable-tab": "^0.10.1",
     "react-redux": "^8.0.2",
+    "react-router": "^6.11.1",
     "react-router-dom": "^6.3.0",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
-    "web-vitals": "^2.1.4",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
-    "eject": "react-scripts eject"
+    "lint:fix": "eslint ./src --fix --ext .js,.jsx",
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src --ext .js,.jsx"
   },
   "eslintConfig": {
     "extends": [
@@ -49,11 +52,15 @@
     ]
   },
   "devDependencies": {
-    "react-scripts": "^5.0.1",
-    "eslint": "^8.20.0",
+    "eslint": "^8.40.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.30.1",
-    "prettier": "^2.7.1"
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1",
+    "react-scripts": "^5.0.1"
   }
 }

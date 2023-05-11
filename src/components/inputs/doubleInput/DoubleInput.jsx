@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { TextInputStyled } from "../textInput/styledInput";
+import React, { useState } from 'react';
+import TextInputStyled from '../textInput/styledInput';
 
 const DoubleInput = ({
   name,
@@ -23,13 +23,13 @@ const DoubleInput = ({
   });
 
   const handleChange1 = (e) => {
-    const value = e.target.value;
+    const value1 = e.target.value;
     setCurrentValue({
       ...currentValue,
       target: {
         name,
         value: {
-          v1: value,
+          v1: value1,
           v2: currentValue.target.value.v2,
         },
       },
@@ -39,7 +39,7 @@ const DoubleInput = ({
   };
 
   const handleChange2 = (e) => {
-    const value = e.target.value;
+    const value2 = e.target.value;
 
     setCurrentValue({
       ...currentValue,
@@ -47,7 +47,7 @@ const DoubleInput = ({
         name,
         value: {
           v1: currentValue.target.value.v1,
-          v2: value,
+          v2: value2,
         },
       },
     });

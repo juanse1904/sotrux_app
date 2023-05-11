@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import LargeTextInput from "./Input";
+import styled from 'styled-components';
+import LargeTextInput from './Input';
 
-export const LargeInputStyled = styled(LargeTextInput)`
+const LargeInputStyled = styled(LargeTextInput)`
   display: flex;
   position: relative;
   flex-direction: column;
@@ -51,7 +51,7 @@ export const LargeInputStyled = styled(LargeTextInput)`
     height: 20px;
     width: 35px;
     padding: 14px 5px;
-    border-bottom: 1px solid ${(props) => (props.error ? "#FF4D4D" : "#DCE2F0")};
+    border-bottom: 1px solid ${(props) => (props.error ? '#FF4D4D' : '#DCE2F0')};
   }
   .password-eye-icon {
     width: 20px;
@@ -67,3 +67,4 @@ export const LargeInputStyled = styled(LargeTextInput)`
     width: 100%;
   }
 `;
+export default LargeInputStyled;

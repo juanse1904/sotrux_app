@@ -1,8 +1,10 @@
-export const popUpData = [
+const popUpData = [
   {
-    title: "Contáctanos",
+    title: 'Contáctanos',
   },
   {
-    title: "Contact Us",
+    title: 'Contact Us',
   },
 ];
+
+export default popUpData;

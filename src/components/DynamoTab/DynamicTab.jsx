@@ -1,48 +1,48 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import LoadCircle from "../../components/loadCircle/LoadCircle";
-import TableData from "../table/tableData";
-import PaginationController from "./paginationController/PaginationController";
-import { inputSwitch } from "./utils/inputSwitch";
-import { changeIndexTab } from "../../ducks/tabs";
-import { changeModalIndexTab } from "../../ducks/modalData";
-import "./dynamotab.css";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import LoadCircle from '../loadCircle/LoadCircle';
+import TableData from '../table/tableData';
+import PaginationController from './paginationController/PaginationController';
+import inputSwitch from './utils/inputSwitch';
+import { changeIndexTab } from '../../ducks/tabs';
+import { changeModalIndexTab } from '../../ducks/modalData';
+import './dynamotab.css';
 
 const DynamoWin = ({ idTable, isModal }) => {
-  let [indexRecord, setIndexRecord] = useState(0);
-  let [indexTab, setIndexTab] = useState(0);
-  let [tabSelected, setTabSelected] = useState(0);
-  const tableType = !isModal ? "Tabs" : "modalTabs";
+  const [indexRecord, setIndexRecord] = useState(0);
+  const [indexTab, setIndexTab] = useState(0);
+  const [tabSelected, setTabSelected] = useState(0);
+  const tableType = !isModal ? 'Tabs' : 'modalTabs';
   const dispatch = useDispatch();
   const isLoading = false;
   const activeTabs = useSelector((state) => state[tableType].activeTabs);
   const currentTab = activeTabs && activeTabs.filter((tab) => tab.idTab === idTable)[0];
 
   return (
-    <>
-      {isLoading ? (
-        <LoadCircle />
-      ) : (
-        currentTab &&
-        currentTab.subTabs && (
+    isLoading ? (
+      <LoadCircle />
+    ) : (
+      currentTab
+        && currentTab.subTabs && (
           <div className="work-table">
             <div className="sub-tabs">
               {currentTab.subTabs.map((subtab, index) => (
-                <div
-                  key={index}
+                <button
+                  type="button"
+                  key={subtab.name}
                   onClick={() => {
                     setTabSelected(index);
                     setIndexTab(index);
                     dispatch(
                       isModal
                         ? changeModalIndexTab({ tab_id: idTable, newTabIndex: index })
-                        : changeIndexTab({ tab_id: idTable, newTabIndex: index })
+                        : changeIndexTab({ tab_id: idTable, newTabIndex: index }),
                     );
                   }}
-                  className={`sub-tabs-item ${tabSelected === index ? "sub-tabs-item-selected" : ""}`}
+                  className={`sub-tabs-item ${tabSelected === index ? 'sub-tabs-item-selected' : ''}`}
                 >
                   <p>{subtab.name}</p>
-                </div>
+                </button>
               ))}
             </div>
             <div className="viewContainer">
@@ -56,7 +56,7 @@ const DynamoWin = ({ idTable, isModal }) => {
                   {currentTab.subTabs[indexTab].fields.map((field) => {
                     const value = currentTab.subTabs[indexTab].tableData
                       ? currentTab.subTabs[indexTab].tableData[indexRecord][field.code]
-                      : " ";
+                      : ' ';
                     return inputSwitch(field, value);
                   })}
                   <PaginationController
@@ -68,9 +68,8 @@ const DynamoWin = ({ idTable, isModal }) => {
               )}
             </div>
           </div>
-        )
-      )}
-    </>
+      )
+    )
   );
 };
 

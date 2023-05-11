@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import DoubleInput from "./DoubleInput";
+import styled from 'styled-components';
+import DoubleInput from './DoubleInput';
 
-export const DoubleInputStyled = styled(DoubleInput)`
+const DoubleInputStyled = styled(DoubleInput)`
   grid-column: ${(props) => props.columnLocation};
   grid-row: ${(props) => props.rowLocation};
 
   .double-container {
     display: grid;
-    grid-template-columns: ${(props) => (props.isDouble ? "60% 10% auto" : "100%")};
+    grid-template-columns: ${(props) => (props.isDouble ? '60% 10% auto' : '100%')};
     grid-gap: 25px;
   }
 
@@ -65,3 +65,4 @@ export const DoubleInputStyled = styled(DoubleInput)`
     transition: opacity 0.8s;
   }
 `;
+export default DoubleInputStyled;

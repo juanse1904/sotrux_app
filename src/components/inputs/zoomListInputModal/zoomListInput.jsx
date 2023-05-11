@@ -1,35 +1,38 @@
-import React, { useState } from "react";
-import MenuItem from "@mui/material/MenuItem";
-import { useDispatch, useSelector } from "react-redux";
-import { addModalTable } from "../../../ducks/modalData";
-import Select from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import ArrowIcon from "./arrowIcon";
-import zoomIcon from "../../../assets/zoom-icon.svg";
-import Modal from "../../ComponentModal/Modal";
-export const ZoomListInput = ({ name, options, className, value, onChangeFunction, tableToZoom }) => {
+import React, { useState } from 'react';
+import MenuItem from '@mui/material/MenuItem';
+import { useDispatch, useSelector } from 'react-redux';
+import Select from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import { addModalTable } from '../../../ducks/modalData';
+import ArrowIcon from './arrowIcon';
+import zoomIcon from '../../../assets/zoom-icon.svg';
+import Modal from '../../ComponentModal/Modal';
+
+export const ZoomListInput = ({
+  name, options, className, value, onChangeFunction, tableToZoom,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const modalCounter = useSelector((state) => state.modalTabs.tablesCounter);
   const modalIdentifier = `modal-${tableToZoom}-${modalCounter}`;
   const dispatch = useDispatch();
   const togglePopup = async () => {
-    await dispatch(addModalTable({ id: tableToZoom, lang: "es" }));
+    await dispatch(addModalTable({ id: tableToZoom, lang: 'es' }));
     setIsOpen(!isOpen);
   };
 
   const handleChange = (event) => {
     onChangeFunction({
-      name: name,
+      name,
       value: event.target.value,
     });
   };
 
   return (
     <div className={className}>
-      <div className="zoomButton" onClick={togglePopup}>
+      <button type="button" className="zoomButton" onClick={togglePopup}>
         <img src={zoomIcon} alt="" />
-      </div>
+      </button>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">{name}</InputLabel>
         <Select
@@ -40,8 +43,8 @@ export const ZoomListInput = ({ name, options, className, value, onChangeFunctio
           IconComponent={ArrowIcon}
           onChange={handleChange}
         >
-          {options.map((option, index) => (
-            <MenuItem key={index} value={option}>
+          {options.map((option) => (
+            <MenuItem key={`menuItem_${option}`} value={option}>
               {option}
             </MenuItem>
           ))}
