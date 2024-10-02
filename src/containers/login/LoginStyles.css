@@ -53,6 +53,11 @@
   color: #cc912e;
   cursor: pointer;
 }
+.languages-list button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
 .mobile-decoration1-login,
 .mobile-decoration2-login,
 .mobile-decoration3-login {

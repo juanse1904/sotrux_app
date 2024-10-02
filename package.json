@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "ajv": "^7.2.4",
     "eslint": "^8.40.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
