@@ -1,6 +1,6 @@
-const loginCopy = [
-  {
-    title: 'Inicia Sesión',
+const loginCopy = {
+  ES: {
+    title1: 'Inicia Sesión',
     subtitle1: '¡Bienvenido!',
     subtitle2: 'Ingresa tus credenciales para continuar',
     email: 'Correo electronico',
@@ -9,9 +9,9 @@ const loginCopy = [
     failMessage: 'usuario o contraseña erroneos',
     button: 'Inicia Sesión',
   },
-  {
-    title: 'Login',
-    subtitle: '¡Welcome! enter your credentials to continue',
+  EN: {
+    title1: 'Login',
+    title2: '¡Welcome! enter your credentials to continue',
     email: 'Email',
     password: 'Password',
     recover: '¿Did you forget your password?',
@@ -19,6 +19,6 @@ const loginCopy = [
     terms: 'I Accept Terms of Service and Privacy Politics',
     button: 'Login',
   },
-];
+};
 
 export default loginCopy;

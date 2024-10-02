@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import TextInputStyled from '../../components/inputs/textInput/styledInput';
 import PasswordInputStyled from '../../components/inputs/passwordInput/styledInput';
 import './LoginStyles.css';
+import loginCopy from './loginCopy';
 import { logInUser } from '../../aws-utils/aws-utils';
 import { publicCopies } from '../../ducks/publicCopies';
 import { userData } from '../../ducks/userData';
@@ -23,7 +24,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [loginFail, setLoginFail] = useState(false);
   const [inputs, setInputs] = useState({});
-  const windowCopies = useSelector((state) => state.publicWindows.login);
+  const windowCopies = loginCopy;
   const dispatch = useDispatch();
   const handleChange = (input) => {
     const { name } = input;
@@ -135,7 +136,7 @@ const Login = () => {
                     className="buttonSubmit"
                     onClick={onSubmit}
                     type="submit"
-                    value={windowCopies[language].loginButton}
+                    value={windowCopies[language].button}
                     disabled={false}
                   />
                 </div>

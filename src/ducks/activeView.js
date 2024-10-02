@@ -17,6 +17,5 @@ const { updateViewId } = slice.actions;
 // Call
 
 export const sendActiveViewId = (windowId) => async (dispatch) => {
-  console.log('in the send active view id', windowId);
   dispatch(updateViewId(windowId));
 };
